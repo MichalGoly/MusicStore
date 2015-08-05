@@ -41,6 +41,9 @@
                   <li><a href="<c:url value='/subscribe' />">Subscribe</a></li> 
                   <li><a href="<c:url value='/contact' />">Contact</a></li> 
                </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="<c:url value='/order/showCart' />"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+               </ul>
             </div>
          </div>
       </div>

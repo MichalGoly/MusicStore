@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS music_store;
+
+CREATE DATABASE music_store;
