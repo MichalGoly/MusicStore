@@ -4,5 +4,11 @@
     Author     : michal
 --%>
 
-   </body>
+   <footer>
+      <div class="container">
+         <p>Code released under the MIT license</p>
+         <p>Copyright (c) ${currentYear} Michal Goly</p>
+      </div>	
+   </footer>
+</body>
 </html>

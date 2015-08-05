@@ -1,0 +1,32 @@
+/* 
+    Created on : 05-Aug-2015, 18:24:29
+    Author     : Michal Goly
+*/
+
+.navbar {
+   margin-bottom: 0;
+}
+
+footer {
+   background-color: #444444;
+   color: #f9f9f9;
+}
+
+/* Sticky footer code */
+html {
+   position: relative;
+   min-height: 100%;
+}
+
+body {
+   margin-bottom: 75px;
+}
+
+footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   /* Footer fixed height */
+   height: 75px;
+}
+/* End of sticky footer code */

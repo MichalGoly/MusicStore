@@ -19,6 +19,8 @@
       <!-- Bootstrap -->
       <link href="<c:url value='/includes/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" />
       <script src="<c:url value='/includes/bootstrap/js/bootstrap.min.js' />"></script> 
+      
+      <link href="<c:url value='/includes/css/style.css' />" rel="stylesheet" />
    </head>
    <body>
       <div class="navbar navbar-default">
