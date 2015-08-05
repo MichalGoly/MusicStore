@@ -4,8 +4,8 @@
     Author     : Michal Goly
 --%>
 
-<jsp:include page="/includes/header.jsp" />
+<jsp:include page="/header.jsp" />
 
 
 
-<jsp:include page="/include/footer.jsp" />
+<jsp:include page="/footer.jsp" />

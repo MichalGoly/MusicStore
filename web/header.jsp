@@ -18,7 +18,7 @@
 
       <!-- Bootstrap -->
       <link href="<c:url value='/includes/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" />
-      <script src="<c:url value='/includes/bootstrap/js/bootstrap.min.js' />"></script>
+      <script src="<c:url value='/includes/bootstrap/js/bootstrap.min.js' />"></script> 
    </head>
    <body>
       <div class="navbar navbar-default">
@@ -30,17 +30,15 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="#">Music Store</a>
+               <a class="navbar-brand" href="<c:url value='/' />">Music Store</a>
             </div>
-            <div>
+            <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Catalog</a></li>
-                  <li<a href="#">Subscribe</a></li> 
-                  <li<a href="#">Contact</a></li> 
+                  <li class="active"><a href="<c:url value='/' />">Home</a></li>
+                  <li><a href="<c:url value='/catalog' />">Catalog</a></li>
+                  <li><a href="<c:url value='/subscribe' />">Subscribe</a></li> 
+                  <li><a href="<c:url value='/contact' />">Contact</a></li> 
                </ul>
             </div>
          </div>
       </div>
-   </body>
-</html>
