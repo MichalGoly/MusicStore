@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * This JavaBean represents a single product in the store, which have its code,
+ * This Entity represents a single product in the store, which have its code,
  * a description and a price. 
  * 
  * @author Michal Goly
@@ -73,5 +73,5 @@ public class Product implements Serializable {
    public void setPrice(BigDecimal price) {
       this.price = price;
    }
-   
+
 }
