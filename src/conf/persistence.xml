@@ -5,7 +5,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <!-- Configure your database connection information here -->
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mysql"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/music_store"/>
       <property name="javax.persistence.jdbc.user" value="user"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="password"/>

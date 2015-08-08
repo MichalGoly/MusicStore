@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Product implements Serializable {
    private Long productId;
    private String code;
    private String description;
+   
+   @Column(precision = 8, scale = 2)
    private BigDecimal price;
    
    public Product() {}
@@ -55,7 +58,11 @@ public class Product implements Serializable {
    
    public String getAlbumName() {
       int hyphenIndex = description.indexOf("-");
-      return description.substring(hyphenIndex, description.length()).trim();
+      return description.substring(hyphenIndex + 1, description.length()).trim();
+   }
+   
+   public String getImageUrl() {
+      return "/img/" + code + "_cover.jpg";
    }
    
    public void setProductId(Long productId) {
