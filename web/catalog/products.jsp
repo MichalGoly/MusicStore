@@ -7,7 +7,7 @@
 
 <jsp:include page="/header.jsp" />
 
-<div class="container">
+<div class="container push_down">
    <c:choose>
       <c:when test="${products == null}">
          <h1>No products found</h1>
@@ -26,7 +26,7 @@
                      <div class="caption">
                         <h3>${product.artistName}</h3>
                         <p>${product.albumName}</p>
-                        <a href="<c:url value='product/${product.code}' />" class="btn btn-primary">More</a>
+                        <a href="<c:url value='catalog/product/${product.code}' />" class="btn btn-primary">More</a>
                      </div>
                   </div>
                </div>  

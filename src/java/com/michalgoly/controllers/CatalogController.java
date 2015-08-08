@@ -22,16 +22,14 @@ public class CatalogController extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       
-      System.out.println("TEST BEFORE");
-      
       // Retrieve the uri
-      String requestURL = request.getRequestURI();
-      String url = "";
+      String requestURI = request.getRequestURI();
+      String url = "/index.jsp";
       
-      System.out.println("TEST: " + requestURL);
-      
-      if (requestURL.endsWith("/catalog")) {
+      if (requestURI.endsWith("/catalog")) {
          url = displayProducts(request, response);
+      } else if (requestURI.matches("/musicStore/catalog/product/.*")) {
+         url = showProduct(request, response);
       }
       
       getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -42,7 +40,11 @@ public class CatalogController extends HttpServlet {
            throws ServletException, IOException {
 
    }
-
+   
+   /*
+   * Retrieves products list from the database, sets in as a session attribute
+   * and prepares an appropriate url. 
+   */
    private String displayProducts(HttpServletRequest request,
            HttpServletResponse response) {
 
@@ -52,5 +54,21 @@ public class CatalogController extends HttpServlet {
       
       return "/catalog/products.jsp";
    }
-
+   
+   private String showProduct(HttpServletRequest request, 
+           HttpServletResponse response) {
+      
+      // Retrieve the product code
+      String requestURI = request.getRequestURI();
+      String[] tokens = requestURI.split("/");
+      String productCode = tokens[tokens.length - 1];
+      
+      // Retrieve the product from the database and set it as a session attribute
+      Product product = ProductDB.selectProduct(productCode);
+      HttpSession session = request.getSession();
+      session.setAttribute("product", product);
+      
+      return "/catalog/single_product.jsp";
+   }
+   
 }

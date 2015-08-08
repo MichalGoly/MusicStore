@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  * This class can manipulate information about products in the database.
@@ -52,6 +53,31 @@ public class ProductDB {
       }
       
       return products;
+   }
+   
+   /**
+    * Retrieves a single product from the database, based on the provided
+    * product code. 
+    * @param productCode The code of the product to be retrieved
+    * @return The selected product if exists, null otherwise
+    */
+   public static Product selectProduct(String productCode) {
+      EntityManager em = DBUtil.getEmFactory().createEntityManager();
+      String queryString = "SELECT p FROM Product p "
+                         + "WHERE p.code = :code";
+      TypedQuery<Product> query = em.createQuery(queryString, Product.class);
+      query.setParameter("code", productCode);
+      
+      Product product = null;
+      try {
+         product = query.getSingleResult();
+      } catch (Exception e) {
+         System.err.println(e);
+      } finally {
+         em.close();
+      }
+      
+      return product;
    }
    
 }

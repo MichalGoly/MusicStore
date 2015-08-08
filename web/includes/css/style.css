@@ -30,3 +30,7 @@ footer {
    height: 75px;
 }
 /* End of sticky footer code */
+
+.push_down {
+   padding-top: 25px;
+}
