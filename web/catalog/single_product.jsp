@@ -12,7 +12,7 @@
       <div class="col-sm-8">
          <h1>${product.artistName}</h1>
          <h3>${product.albumName}</h3>
-         <p class="album_info">${product.albumInformation}</p>
+         <p class="larger_p">${product.albumInformation}</p>
       </div>
       <div class="col-sm-4">
          <img class="img-thumbnail" src="<c:url value='${product.imageUrl}' />" alt="Cover Image" />

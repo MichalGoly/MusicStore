@@ -42,6 +42,10 @@ footer {
    color: #2196f3;
 }
 
-.album_info {
+.larger_p {
    font-size: 120%;
+}
+
+.centre-align {
+   text-align: center;
 }
