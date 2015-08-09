@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/catalog/products.jsp</file>
+            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/WEB-INF/web.xml</file>
+            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/index.jsp</file>
             <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/controllers/CatalogController.java</file>
             <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/catalog/single_product.jsp</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/data/ProductDB.java</file>
         </group>
     </open-files>
 </project-private>

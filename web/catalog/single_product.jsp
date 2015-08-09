@@ -12,13 +12,22 @@
       <div class="col-sm-8">
          <h1>${product.artistName}</h1>
          <h3>${product.albumName}</h3>
+         <p class="album_info">${product.albumInformation}</p>
       </div>
       <div class="col-sm-4">
-         <img src="<c:url value='${product.imageUrl}' />" alt="Cover Image" />
+         <img class="img-thumbnail" src="<c:url value='${product.imageUrl}' />" alt="Cover Image" />
       </div>
    </div>
-   <div class="row">
-      <p>Description and song titles will go here</p>
+   <div class="row push_down">
+      <div class="col-sm-8">
+      </div>
+      <div class="col-sm-4">
+         <p class="price">${product.priceCurrencyFormat}</p>
+         <div class="btn-group">
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+            <a href="<c:url value='/catalog/product/${product.code}/listen' />" class="btn btn-default">Listen to Samples</a>
+         </div>
+      </div>
    </div>
 </div>
 

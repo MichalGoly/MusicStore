@@ -7,17 +7,21 @@
 
 <jsp:include page="/header.jsp" />
 
-<div class="container push_down">
+<div class="container">
    <c:choose>
       <c:when test="${products == null}">
-         <h1>No products found</h1>
+         <div class="page-header">
+            <h1>No products found</h1>
+         </div>
          <p>
             Unfortunately there are no product available for purchase right now.
             Please visit our shop later. 
          </p>
       </c:when>
       <c:otherwise>
-         <h1>The Music Store Catalog</h1>
+         <div class="page-header">
+            <h1>The Music Store Catalog</h1>
+         </div>
          <div class="row">
             <c:forEach var="product" items="${products}">
                <div class="col-sm-6 col-md-4">
@@ -26,7 +30,7 @@
                      <div class="caption">
                         <h3>${product.artistName}</h3>
                         <p>${product.albumName}</p>
-                        <a href="<c:url value='catalog/product/${product.code}' />" class="btn btn-primary">More</a>
+                        <a href="<c:url value='catalog/product/${product.code}' />" class="btn btn-primary btn-block">More</a>
                      </div>
                   </div>
                </div>  
