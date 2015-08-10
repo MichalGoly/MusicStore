@@ -5,7 +5,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-   <!-- Enable the custom error pages -->
    <error-page>
       <error-code>404</error-code>
       <location>/error_404.jsp</location>
@@ -14,4 +13,8 @@
       <exception-type>java.lang.Throwable</exception-type>
       <location>/error_java.jsp</location>
    </error-page>
+   
+   <listener>
+      <listener-class>com.michalgoly.util.MusicStoreContextListener</listener-class>
+   </listener>
 </web-app>
