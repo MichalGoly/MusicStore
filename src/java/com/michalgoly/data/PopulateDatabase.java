@@ -36,8 +36,8 @@ public class PopulateDatabase {
               + "lot of ground. \"How to Get There\" is a rambling epic that "
               + "unleashes a rapid-fire lyrical barrage while \"Don't Close Your "
               + "Eyes\" and \"Morning Sun\" are more melancholy and bittersweet.");
-      p1.setCsAlbumTitles("How to Get There,You Are a Star,Don't Make No Difference,"
-              + "Unidentified Fiddling Object,Beat Up Old Car,Wildflowers,"
+      p1.setCsAlbumTitles("How to Get There,You Are a Star,Wildflowers,"
+              + "Unidentified Fiddling Object,Beat Up Old Car,Don't Make No Difference,"
               + "What You Whistle When You Walk Home,Three Sheets to the Wind,"
               + "Singin' Drunk,Don't Close Your Eyes,Morning Sun");
       
@@ -73,8 +73,8 @@ public class PopulateDatabase {
               "and \"Let the Possums Play Possum\" is a instrumental romp that's " +
               "driven by dual fiddles. If you liked the first CD, you'll like " +
               "this one too.");
-      p3.setCsAlbumTitles("Neon Lights,Just About Midnight,Tank Hill,Let the " + 
-              "Possums Play Possum,Find Me,Take a Picture,Billy Banjo,Most of " + 
+      p3.setCsAlbumTitles("Just About Midnight,Neon Lights,Take a Picture,Let the " + 
+              "Possums Play Possum,Find Me,Tank Hill,Billy Banjo,Most of " + 
               "the Time,Armenian Wedding,West Portal,Twist Away,Kern County " + 
               "Waltz,Distance,Sunshine on the Trees");
       
@@ -87,8 +87,8 @@ public class PopulateDatabase {
               "of \"Find My Way Marie\" to psychedelic Brit-pop tunes " + 
               "like \"A Place In All This.\" This well-crafted album is " + 
               "unique and cohesive, revealing its many layers on repeated listens.");
-      p4.setCsAlbumTitles("Filter,Find My Way Marie,Hole,1400 Years,So Long " + 
-              "Lazy Ray,A Tuna Is a Damn Big Fish,El Dorado,Dream of You,This " + 
+      p4.setCsAlbumTitles("Find My Way Marie,Filter,Hole,1400 Years,A Tuna Is a Damn Big Fish,So Long " + 
+              "Lazy Ray,El Dorado,Dream of You,This " + 
               "Sea Is Full of Monsters,A Place in All This,GTTSWMD,AM Land,Whole " + 
               "Month of Sundays,Penny From a Poor Man");
       

@@ -49,3 +49,7 @@ footer {
 .centre-align {
    text-align: center;
 }
+
+.badge {
+   background-color: white;
+}
