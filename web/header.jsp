@@ -21,6 +21,26 @@
       <script src="<c:url value='/includes/bootstrap/js/bootstrap.min.js' />"></script> 
       
       <link href="<c:url value='/includes/css/style.css' />" rel="stylesheet" />
+      
+      <!-- jQuery script which makes appropriate navbar tab active -->
+      <script>
+         var j$ = jQuery.noConflict();
+         j$(document).ready(function() {
+            j$(".nav").find(".active").removeClass("active");
+            var url = j$(location).attr('href');
+            if (url.indexOf("catalog") >= 0) {
+               j$("#catalog").addClass("active");
+            } else if (url.indexOf("subscribe") >= 0) {
+               j$("#subscribe").addClass("active");
+            } else if (url.indexOf("contact") >= 0) {
+               j$("#contact").addClass("active");
+            } else if (url.indexOf("order") >= 0) {
+               j$("#order").addClass("active");
+            } else {
+               j$("#home").addClass("active");
+            }
+         });
+      </script>
    </head>
    <body>
       <div class="navbar navbar-default">
@@ -36,13 +56,13 @@
             </div>
             <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav">
-                  <li class="active"><a href="<c:url value='/' />">Home</a></li>
-                  <li><a href="<c:url value='/catalog' />">Catalog</a></li>
-                  <li><a href="<c:url value='/subscribe' />">Subscribe</a></li> 
-                  <li><a href="<c:url value='/contact' />">Contact</a></li> 
+                  <li id="home"><a href="<c:url value='/' />">Home</a></li>
+                  <li id="catalog"><a href="<c:url value='/catalog' />">Catalog</a></li>
+                  <li id="subscribe"><a href="<c:url value='/subscribe' />">Subscribe</a></li> 
+                  <li id="contact"><a href="<c:url value='/contact' />">Contact</a></li> 
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="<c:url value='/order/showCart' />"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                  <li id="order"><a href="<c:url value='/order/showCart' />"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                </ul>
             </div>
          </div>
