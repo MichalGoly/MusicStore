@@ -53,3 +53,7 @@ footer {
 .badge {
    background-color: white;
 }
+
+table {
+   width: auto;
+}

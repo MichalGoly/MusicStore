@@ -27,7 +27,7 @@
                      <c:when test="${i.index == 1 || i.index == 5}">
                         ${i.index + 1}. ${title} 
                         <span class="badge">
-                           <a href="<c:url value='/musicStore/sound/${product.code}/${i.index + 1}.mp3' />">
+                           <a href="<c:url value='/sound/${product.code}/${i.index + 1}.mp3' />">
                               <span class="glyphicon glyphicon-play"></span>
                            </a>
                         </span>

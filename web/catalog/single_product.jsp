@@ -23,10 +23,11 @@
       </div>
       <div class="col-sm-4">
          <p class="price">${product.priceCurrencyFormat}</p>
-         <div class="btn-group">
-            <a href="#" class="btn btn-primary">Add to Cart</a>
-            <a href="<c:url value='/catalog/product/${product.code}/listen' />" class="btn btn-default">Listen to Samples</a>
-         </div>
+         <form method="post" action="<c:url value='/order/addItem'/>">
+            <input type="hidden" name="productCode" value="<c:out value='${product.code}' />" />
+            <input type="submit" class="btn btn-primary" value="Add to Cart" />
+         </form>
+         <a href="<c:url value='/catalog/product/${product.code}/listen' />" class="btn btn-default">Listen to Samples</a>
       </div>
    </div>
 </div>

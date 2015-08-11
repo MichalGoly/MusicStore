@@ -11,7 +11,7 @@
    <div class="page-header">
       <h1 class="centre-align">Download Registration</h1>
    </div>
-   <p class="centre-align">
+   <p class="centre-align larger_p">
       Before you can download and listen to these sound files, you must 
       register with us by entering your name and email address below.
    </p>      
