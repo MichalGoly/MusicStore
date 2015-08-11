@@ -29,7 +29,7 @@ public class IfEmptyPutAsteriskTag extends TagSupport {
       try {
          JspWriter out = pageContext.getOut();
          if (field == null || field.isEmpty()) {
-            out.print("<span class='asterisk'>*</span>");
+            out.print("<span class='asterisk'> *</span>");
          }
       } catch (IOException e) {
          System.err.println(e);

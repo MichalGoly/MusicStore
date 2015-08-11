@@ -24,39 +24,56 @@
             </div>
             <div class="form-group">
                <label for="lastName">Last Name:</label>
-               <input type="text" name="lastName" id="lastName" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.lastName}" />
+               <input type="text" name="lastName" id="lastName" class="form-control" 
+                      value="<c:out value='${customer.lastName}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="email">Email:</label>
-               <input type="email" name="email" id="email" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.email}" />
+               <input type="email" name="email" id="email" class="form-control" 
+                      value="<c:out value='${customer.email}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="companyName">Company:</label>
-               <input type="text" name="companyName" id="companyName" class="form-control" />
+               <input type="text" name="companyName" id="companyName" 
+                      value="<c:out value='${customer.address.companyName}' />" class="form-control" />
             </div>
             <div class="form-group">
                <label for="address1">Address1:</label>
-               <input type="text" name="address1" id="address1" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.address1}" />
+               <input type="text" name="address1" id="address1" class="form-control" 
+                      value="<c:out value='${customer.address.address1}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="address2">Address2:</label>
-               <input type="text" name="address2" id="address2" class="form-control" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.address2}" />
+               <input type="text" name="address2" id="address2" class="form-control" 
+                      value="<c:out value='${customer.address.address2}' />" />
             </div>
             <div class="form-group">
                <label for="city">City:</label>
-               <input type="text" name="city" id="city" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.city}" />
+               <input type="text" name="city" id="city" class="form-control" 
+                      value="<c:out value='${customer.address.city}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="county">County:</label>
-               <input type="text" name="county" id="county" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.county}" />
+               <input type="text" name="county" id="county" class="form-control" 
+                      value="<c:out value='${customer.address.county}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="postCode">Post Code:</label>
-               <input type="text" name="postCode" id="postCode" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.postCode}" />
+               <input type="text" name="postCode" id="postCode" class="form-control" 
+                      value="<c:out value='${customer.address.postCode}' />" required="true" />
             </div>
             <div class="form-group">
                <label for="country">Country:</label>
-               <input type="text" name="country" id="country" class="form-control" required="true" />
+               <goly:ifEmptyPutAsterisk field="${customer.address.country}" />
+               <input type="text" name="country" id="country" class="form-control" 
+                      value="<c:out value='${customer.address.country}' />" required="true" />
             </div>
             <div class="form-group">
                <input type="submit" class="btn btn-primary" value="Continue" />
