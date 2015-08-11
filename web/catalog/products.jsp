@@ -1,7 +1,7 @@
 <%-- 
     Document   : products
     Created on : 07-Aug-2015, 15:37:08
-    Author     : michal
+    Author     : Michal Goly
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

@@ -12,7 +12,7 @@
       <div class="col-sm-8">
          <h1>${product.artistName}</h1>
          <h3>${product.albumName}</h3>
-         <p class="larger_p">You can listen to the selected tracks by clicking play icons below.</p>
+         <p class="larger_p">You can listen to the selected tracks by clicking on the play icons below.</p>
       </div>
       <div class="col-sm-4">
          <img class="img-thumbnail" src="<c:url value='${product.imageUrl}' />" alt="Cover Image" />
@@ -27,7 +27,7 @@
                      <c:when test="${i.index == 1 || i.index == 5}">
                         ${i.index + 1}. ${title} 
                         <span class="badge">
-                           <a href="/musicStore/sound/${product.code}/${i.index + 1}.mp3">
+                           <a href="<c:url value='/musicStore/sound/${product.code}/${i.index + 1}.mp3' />">
                               <span class="glyphicon glyphicon-play"></span>
                            </a>
                         </span>
