@@ -1,12 +1,16 @@
 package com.michalgoly.controllers;
 
 import com.michalgoly.business.Cart;
+import com.michalgoly.business.Customer;
 import com.michalgoly.business.LineItem;
 import com.michalgoly.business.Product;
+import com.michalgoly.data.CustomerDB;
 import com.michalgoly.data.ProductDB;
+import com.michalgoly.util.CookieUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +50,8 @@ public class OrderController extends HttpServlet {
          url = removeItem(request, response);
       } else if (requestURI.endsWith("/updateItem")) {
          url = updateItem(request, response);
+      } else if (requestURI.endsWith("/checkCustomer")) {
+            url = checkCustomer(request, response);
       }
       
       getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -132,6 +138,35 @@ public class OrderController extends HttpServlet {
       }
       
       return "/cart/cart.jsp";
+   }
+
+   private String checkCustomer(HttpServletRequest request,
+           HttpServletResponse response) {
+      
+      HttpSession session = request.getSession();
+      Customer customer = (Customer) session.getAttribute("customer");
+      
+      String url = "/cart/new_customer.jsp";
+      if (customer != null && !customer.getAddress().getAddress1().equals("")) {
+         // customer with an address1 exists
+         url = "/order/displayInvoice";
+      } else {
+         Cookie[] cookies = request.getCookies();
+         String email = CookieUtil.getCookieValue(cookies, "emailCookie");
+         
+         if (email == null) {
+            customer = new Customer();
+            url = "/cart/new_customer.jsp";
+         } else {
+            customer = CustomerDB.selectByEmail(email);
+            if (customer != null && !customer.getAddress().getAddress1().equals("")) {
+               url = "/order/displayInvoice";
+            }
+         }
+      }
+      
+      session.setAttribute("customer", customer);
+      return url;
    }
 
 }

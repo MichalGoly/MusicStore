@@ -57,3 +57,7 @@ footer {
 table {
    width: auto;
 }
+
+.asterisk {
+   color: red;
+}

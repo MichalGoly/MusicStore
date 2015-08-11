@@ -27,7 +27,7 @@
                   <strong>To remove an item,</strong> click on the remove button.
                </p>
                <a href="<c:url value='/catalog' />" class="btn btn-primary">Continue shopping</a>
-               <form method="post" action="<c:url value='/order/checkUser'/>">
+               <form method="post" action="<c:url value='/order/checkCustomer'/>">
                   <input type="submit" class="btn btn-default" value="Checkout" />
                </form>
             </div>
