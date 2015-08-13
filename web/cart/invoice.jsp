@@ -65,7 +65,7 @@
             <form method="post" action="<c:url value='/order/displayCustomer' />">
                <input type="submit" class="btn btn-default float-left" value="Edit Address">
             </form>
-            <form method="post" action="<c:url value='/order/displayCreditCard' />">
+            <form method="post" action="<c:url value='/order/displayPayment' />">
                <input type="submit" class="btn btn-primary" value="Continue">
             </form>
          </div>

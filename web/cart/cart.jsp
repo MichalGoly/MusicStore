@@ -39,7 +39,7 @@
                      <col class="col-md-1">
                      <col class="col-md-1">
                      <col class="col-md-1">
-                   </colgroup>
+                  </colgroup>
                   <thead>
                      <tr>
                         <th>Quantity</th>
@@ -70,6 +70,13 @@
                            </td>
                         </tr>
                      </c:forEach>
+                     <tr>
+                        <td><strong>Total:</strong></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>${cart.totalPriceCurrencyFormat}</td>
+                        <td>&nbsp;</td>
+                     </tr>     
                   </tbody>
                </table>
             </div>
