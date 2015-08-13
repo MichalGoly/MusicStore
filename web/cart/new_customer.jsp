@@ -15,6 +15,11 @@
    <p class="larger_p centre-align">Please enter your name and contact information</p>
    <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
+         <c:if test="${message != null}">
+            <div class="alert alert-danger" role="alert">
+               <p>${message}</p>
+            </div>
+         </c:if>         
          <form method="post" action="<c:url value='/order/processCustomer' />">
             <div class="form-group">
                <label for="firstName">First Name:</label>
@@ -32,7 +37,7 @@
                <label for="email">Email:</label>
                <goly:ifEmptyPutAsterisk field="${customer.email}" />
                <input type="email" name="email" id="email" class="form-control" 
-                      value="<c:out value='${customer.email}' />" required="true" />
+                      value="<c:out value='${customer.email}' />" />
             </div>
             <div class="form-group">
                <label for="companyName">Company:</label>
@@ -47,7 +52,6 @@
             </div>
             <div class="form-group">
                <label for="address2">Address2:</label>
-               <goly:ifEmptyPutAsterisk field="${customer.address.address2}" />
                <input type="text" name="address2" id="address2" class="form-control" 
                       value="<c:out value='${customer.address.address2}' />" />
             </div>
