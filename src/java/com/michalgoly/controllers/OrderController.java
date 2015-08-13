@@ -3,12 +3,14 @@ package com.michalgoly.controllers;
 import com.michalgoly.business.Address;
 import com.michalgoly.business.Cart;
 import com.michalgoly.business.Customer;
+import com.michalgoly.business.Invoice;
 import com.michalgoly.business.LineItem;
 import com.michalgoly.business.Product;
 import com.michalgoly.data.CustomerDB;
 import com.michalgoly.data.ProductDB;
 import com.michalgoly.util.CookieUtil;
 import java.io.IOException;
+import java.util.Date;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.ServletException;
@@ -57,6 +59,8 @@ public class OrderController extends HttpServlet {
          url = checkCustomer(request, response);
       } else if (requestURI.endsWith("/processCustomer")) {
          url = processCustomer(request, response);
+      } else if (requestURI.endsWith("/displayInvoice")) {
+         url = displayInvoice(request, response);
       }
 
       getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -273,6 +277,23 @@ public class OrderController extends HttpServlet {
       
       customer.setAddress(address);
       return customer;
+   }
+
+   private String displayInvoice(HttpServletRequest request, 
+           HttpServletResponse response) {
+      
+      HttpSession session = request.getSession();
+      Customer customer = (Customer) session.getAttribute("customer");
+      Cart cart = (Cart) session.getAttribute("cart");
+      
+      Invoice invoice = new Invoice();
+      invoice.setCustomer(customer);
+      invoice.setLineItems(cart.getItems());
+      invoice.setInvoiceDate(new Date());
+      
+      session.setAttribute("invoice", invoice);
+      
+      return "/cart/invoice.jsp";
    }
 
 }

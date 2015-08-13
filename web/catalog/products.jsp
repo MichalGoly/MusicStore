@@ -19,7 +19,7 @@
          </p>
       </c:when>
       <c:otherwise>
-         <div class="page-header">
+         <div class="page-header centre-align">
             <h1>The Music Store Catalog</h1>
          </div>
          <div class="row">

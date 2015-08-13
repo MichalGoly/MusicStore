@@ -61,3 +61,15 @@ table {
 .asterisk {
    color: red;
 }
+
+.float-left {
+   float: left;
+}
+
+.remove-margin {
+   margin: 0;
+}
+
+.additional-padding {
+   padding: 20px;
+}

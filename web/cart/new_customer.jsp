@@ -37,7 +37,7 @@
                <label for="email">Email:</label>
                <goly:ifEmptyPutAsterisk field="${customer.email}" />
                <input type="email" name="email" id="email" class="form-control" 
-                      value="<c:out value='${customer.email}' />" />
+                      value="<c:out value='${customer.email}' />" required="true"/>
             </div>
             <div class="form-group">
                <label for="companyName">Company:</label>

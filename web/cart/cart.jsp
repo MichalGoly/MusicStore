@@ -8,7 +8,7 @@
 <jsp:include page="/header.jsp" />
 
 <div class="container">
-   <div class="page-header">
+   <div class="page-header centre-align">
       <h1>Cart</h1>
    </div>
    <c:choose>
@@ -26,9 +26,9 @@
                <p class="larger_p">
                   <strong>To remove an item,</strong> click on the remove button.
                </p>
-               <a href="<c:url value='/catalog' />" class="btn btn-primary">Continue shopping</a>
+               <a href="<c:url value='/catalog' />" class="btn btn-default float-left">Continue shopping</a>
                <form method="post" action="<c:url value='/order/checkCustomer'/>">
-                  <input type="submit" class="btn btn-default" value="Checkout" />
+                  <input type="submit" class="btn btn-primary" value="Checkout" />
                </form>
             </div>
             <div class="col-sm-8">
