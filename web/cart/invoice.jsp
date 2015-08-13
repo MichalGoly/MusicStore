@@ -4,6 +4,7 @@
     Author     : Michal Goly
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/header.jsp" />
 
@@ -15,7 +16,7 @@
       <div class="col-sm-8 col-sm-offset-2">
          <div class="panel panel-default larger_p additional-padding">
             <p><strong>Date:</strong></p>
-            <p>${invoice.invoiceDate}</p>
+            <p><fmt:formatDate value="${invoice.invoiceDate}" type="date" dateStyle="short" /></p>
 
             <p><strong>Ship to:</strong></p>
             <p class="remove-margin">${invoice.customer.firstName} ${invoice.customer.lastName}</p>

@@ -61,6 +61,10 @@ public class OrderController extends HttpServlet {
          url = processCustomer(request, response);
       } else if (requestURI.endsWith("/displayInvoice")) {
          url = displayInvoice(request, response);
+      } else if (requestURI.endsWith("/displayCustomer")) {
+         url = "/cart/new_customer.jsp";
+      } else if (requestURI.endsWith("/displayCreditCard")) {
+         // TODO
       }
 
       getServletContext().getRequestDispatcher(url).forward(request, response);
