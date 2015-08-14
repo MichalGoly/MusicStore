@@ -1,14 +1,18 @@
 package com.michalgoly.controllers;
 
 import com.michalgoly.business.Address;
+import com.michalgoly.business.CardType;
 import com.michalgoly.business.Cart;
+import com.michalgoly.business.CreditCard;
 import com.michalgoly.business.Customer;
 import com.michalgoly.business.Invoice;
 import com.michalgoly.business.LineItem;
 import com.michalgoly.business.Product;
 import com.michalgoly.data.CustomerDB;
+import com.michalgoly.data.InvoiceDB;
 import com.michalgoly.data.ProductDB;
 import com.michalgoly.util.CookieUtil;
+import com.michalgoly.util.MailUtil;
 import java.io.IOException;
 import java.util.Date;
 import javax.mail.internet.AddressException;
@@ -65,6 +69,8 @@ public class OrderController extends HttpServlet {
          url = "/cart/new_customer.jsp";
       } else if (requestURI.endsWith("/displayPayment")) {
          url = "/cart/payment.jsp";
+      } else if (requestURI.endsWith("/complete")) {
+         url = complete(request, response);
       }
 
       getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -196,16 +202,16 @@ public class OrderController extends HttpServlet {
       String county = request.getParameter("county");
       String postCode = request.getParameter("postCode");
       String country = request.getParameter("country");
-            
+
       HttpSession session = request.getSession();
-      Customer customer = createCustomer(session, firstName, lastName, email, 
+      Customer customer = createCustomer(session, firstName, lastName, email,
               companyName, address1, address2, city, county, postCode, country);
-      
+
       // validate data
       String url;
-      if (isValid(firstName, lastName, email, companyName, address1, address2, 
+      if (isValid(firstName, lastName, email, companyName, address1, address2,
               city, county, postCode, country)) {
-         
+
          if (CustomerDB.emailExists(email)) {
             CustomerDB.update(customer);
          } else {
@@ -218,7 +224,7 @@ public class OrderController extends HttpServlet {
          request.setAttribute("message", message);
          url = "/cart/new_customer.jsp";
       }
-      
+
       session.setAttribute("customer", customer);
       return url;
    }
@@ -230,9 +236,9 @@ public class OrderController extends HttpServlet {
    private boolean isValid(String firstName, String lastName, String email,
            String companyName, String address1, String address2, String city,
            String county, String postCode, String country) {
-      
+
       boolean valid = true;
-      
+
       if (firstName == null || lastName == null || email == null || address1 == null
               || city == null || county == null || postCode == null || country == null) {
          valid = false;
@@ -248,28 +254,28 @@ public class OrderController extends HttpServlet {
             valid = false;
          }
       }
-      
+
       return valid;
    }
-   
+
    /*
     * Retrieves a customer object from the http session or creates a new one if
     * it does not exist. Afterwards, it fills it with the provided data. 
     */
-   private Customer createCustomer(HttpSession session, String firstName, 
-           String lastName, String email, String companyName, String address1, 
+   private Customer createCustomer(HttpSession session, String firstName,
+           String lastName, String email, String companyName, String address1,
            String address2, String city, String county, String postCode,
            String country) {
-      
+
       Customer customer = (Customer) session.getAttribute("customer");
       if (customer == null) {
          customer = new Customer();
       }
-      
+
       customer.setFirstName(firstName);
       customer.setLastName(lastName);
       customer.setEmail(email);
-      
+
       Address address = new Address();
       address.setAddress1(address1);
       address.setAddress2(address2);
@@ -278,26 +284,65 @@ public class OrderController extends HttpServlet {
       address.setCounty(county);
       address.setCountry(country);
       address.setPostCode(postCode);
-      
+
       customer.setAddress(address);
       return customer;
    }
 
-   private String displayInvoice(HttpServletRequest request, 
+   private String displayInvoice(HttpServletRequest request,
            HttpServletResponse response) {
-      
+
       HttpSession session = request.getSession();
       Customer customer = (Customer) session.getAttribute("customer");
       Cart cart = (Cart) session.getAttribute("cart");
-      
+
       Invoice invoice = new Invoice();
       invoice.setCustomer(customer);
       invoice.setLineItems(cart.getItems());
       invoice.setInvoiceDate(new Date());
-      
+
       session.setAttribute("invoice", invoice);
-      
+
       return "/cart/invoice.jsp";
+   }
+
+   private String complete(HttpServletRequest request, HttpServletResponse response) {
+      // retrieve parametres from the payment form
+      String cardType = request.getParameter("cardType");
+      String cardNumber = request.getParameter("cardNumber");
+      String expirationMonth = request.getParameter("expirationMonth");
+      String expirationYear = request.getParameter("expirationYear");
+
+      HttpSession session = request.getSession();
+      Customer customer = (Customer) session.getAttribute("customer");
+      Invoice invoice = (Invoice) session.getAttribute("invoice");
+
+      CreditCard creditCard = new CreditCard();
+      creditCard.setCardType(CardType.fromString(cardType));
+      creditCard.setNumber(cardNumber);
+      creditCard.setExpirationDate(expirationMonth + "/" + expirationYear);
+
+      customer.setCreditCard(creditCard);
+      if (CustomerDB.emailExists(customer.getEmail())) {
+         CustomerDB.update(customer);
+      } else {
+         CustomerDB.insert(customer);
+      }
+
+      // insert an invoice to the database and remove all items from user's cart
+      InvoiceDB.insert(invoice);
+      session.setAttribute("cart", null);
+      
+      Cookie emailCookie = new Cookie("emailCookie", customer.getEmail());
+      emailCookie.setMaxAge(60 * 24 * 365 * 2 * 60);
+      emailCookie.setPath("/");
+      response.addCookie(emailCookie);
+      
+      // send confirmation email
+      MailUtil.sendOrderConfirmation(getServletContext(), customer.getEmail(),
+              customer.getFirstName());
+      
+      return "/cart/thanks.jsp";
    }
 
 }

@@ -28,7 +28,7 @@ public class Customer implements Serializable {
    @OneToOne(cascade = CascadeType.ALL)
    private Address address;
    
-   @OneToOne
+   @OneToOne(cascade = CascadeType.ALL)
    private CreditCard creditCard;
    
    public Customer() {}
