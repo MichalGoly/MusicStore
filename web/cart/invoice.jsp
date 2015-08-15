@@ -19,18 +19,18 @@
             <p><fmt:formatDate value="${invoice.invoiceDate}" type="date" dateStyle="short" /></p>
 
             <p><strong>Ship to:</strong></p>
-            <p class="remove-margin">${invoice.customer.firstName} ${invoice.customer.lastName}</p>
+            <p class="remove-margin"><c:out value='${invoice.customer.firstName} ${invoice.customer.lastName}' /></p>
             <c:if test="${invoice.customer.address.companyName != null}">
-               <p class="remove-margin">${invoice.customer.address.companyName}</p>
+               <p class="remove-margin"><c:out value='${invoice.customer.address.companyName}' /></p>
             </c:if>
-            <p class="remove-margin">${invoice.customer.address.address1}</p>
+               <p class="remove-margin"><c:out value='${invoice.customer.address.address1}' /></p>
             <c:if test="${invoice.customer.address.address2 != null}">
-               <p class="remove-margin">${invoice.customer.address.address2}</p>
+               <p class="remove-margin"><c:out value='${invoice.customer.address.address2}' /></p>
             </c:if>
-            <p class="remove-margin">${invoice.customer.address.city}</p>
-            <p class="remove-margin">${invoice.customer.address.county}</p>
-            <p class="remove-margin">${invoice.customer.address.postCode}</p>
-            <p class="remove-margin">${invoice.customer.address.country}</p>
+            <p class="remove-margin"><c:out value='${invoice.customer.address.city}' /></p>
+            <p class="remove-margin"><c:out value='${invoice.customer.address.county}' /></p>
+            <p class="remove-margin"><c:out value='${invoice.customer.address.postCode}' /></p>
+            <p class="remove-margin"><c:out value='${invoice.customer.address.country}' /></p>
 
             <table class="table">
                <colgroup>
