@@ -1,52 +1,52 @@
 package com.michalgoly.data;
 
-import com.michalgoly.business.Customer;
+import com.michalgoly.business.Subscriber;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 /**
- * This class can manipulate customer objects in the database
+ * This class manipulates subscriber objects in the database.
  *
  * @author Michal Goly
  */
-public class CustomerDB {
+public class SubscriberDB {
 
    /**
-    * Retrieves a single customer from the database using provided email address.
+    * Retrieves a single subscriber from the database using provided email address.
     *
-    * @param email The email address of a customer
-    * @return Either appropriate Customer object, or null if he doesn't exist
+    * @param email The email address of a subscriber
+    * @return Either appropriate Subscriber object, or null if he doesn't exist
     */
-   public static Customer selectByEmail(String email) {
+   public static Subscriber selectByEmail(String email) {
       EntityManager em = DBUtil.getEmFactory().createEntityManager();
-      String queryString = "SELECT c FROM Customer c "
-                         + "WHERE c.email = :email";
-      TypedQuery<Customer> query = em.createQuery(queryString, Customer.class);
+      String queryString = "SELECT s FROM Subscriber s "
+              + "WHERE s.email = :email";
+      TypedQuery<Subscriber> query = em.createQuery(queryString, Subscriber.class);
       query.setParameter("email", email);
 
-      Customer customer = null;
+      Subscriber subscriber = null;
       try {
-         customer = query.getSingleResult();
+         subscriber = query.getSingleResult();
       } catch (Exception e) {
          System.err.println(e);
       } finally {
          em.close();
       }
 
-      return customer;
+      return subscriber;
    }
 
    /**
-    * @param customer The customer to be inserted into a database
+    * @param subscriber The subscriber to be inserted into a database
     */
-   public static void insert(Customer customer) {
+   public static void insert(Subscriber subscriber) {
       EntityManager em = DBUtil.getEmFactory().createEntityManager();
       EntityTransaction transaction = em.getTransaction();
 
       try {
          transaction.begin();
-         em.persist(customer);
+         em.persist(subscriber);
          transaction.commit();
       } catch (Exception e) {
          System.out.println(e);
@@ -55,17 +55,17 @@ public class CustomerDB {
          em.close();
       }
    }
-   
+
    /**
-    * @param customer The customer to be updated
+    * @param subscriber The subscriber to be updated
     */
-   public static void update(Customer customer) {
+   public static void update(Subscriber subscriber) {
       EntityManager em = DBUtil.getEmFactory().createEntityManager();
       EntityTransaction transaction = em.getTransaction();
 
       try {
          transaction.begin();
-         em.merge(customer);
+         em.merge(subscriber);
          transaction.commit();
       } catch (Exception e) {
          System.out.println(e);
@@ -74,15 +74,14 @@ public class CustomerDB {
          em.close();
       }
    }
-   
+
    /**
-    * Checks if customer with specified email exists within the database
-    * 
+    * Checks if subscriber with specified email exists within the database
+    *
     * @param email The email address to be checked
-    * @return True if a customer with given email exists, false otherwise
+    * @return True if a subscriber with given email exists, false otherwise
     */
    public static boolean emailExists(String email) {
       return selectByEmail(email) != null;
    }
-   
 }
