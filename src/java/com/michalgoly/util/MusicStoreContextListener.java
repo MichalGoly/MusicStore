@@ -1,7 +1,10 @@
 package com.michalgoly.util;
 
+import com.michalgoly.business.Product;
+import com.michalgoly.data.ProductDB;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -22,6 +25,10 @@ public class MusicStoreContextListener implements ServletContextListener {
       GregorianCalendar calendar = new GregorianCalendar();
       int currentYear = calendar.get(Calendar.YEAR);
       sContext.setAttribute("currentYear", currentYear);
+      
+      // find the newest product in the store and set it as a context attribute
+      Product newestProduct = ProductDB.selectNewestProduct();
+      sContext.setAttribute("newestProduct", newestProduct);
    }
 
    @Override

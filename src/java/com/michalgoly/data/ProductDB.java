@@ -80,4 +80,26 @@ public class ProductDB {
       return product;
    }
    
+   /**
+    * @return Either the newest product, or null it if does not exist
+    */
+   public static Product selectNewestProduct() {
+      EntityManager em = DBUtil.getEmFactory().createEntityManager();
+      String queryString = "SELECT p FROM Product p "
+                         + "ORDER BY p.productId";
+      Query query = em.createQuery(queryString);
+      
+      Product product = null;
+              
+      try {
+         List<Product> products = query.getResultList();
+         product = products.get(products.size() - 1);
+      } catch (Exception e) {
+         System.err.println(e);
+      } finally {
+         em.close();
+      }
+      
+      return product;
+   }
 }
