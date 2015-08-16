@@ -12,6 +12,14 @@ footer {
    color: #f9f9f9;
 }
 
+footer a {
+   color: #f9f9f9;
+}
+
+footer p a {
+   text-decoration: underline;
+}
+
 /* Sticky footer code */
 html {
    position: relative;
@@ -19,7 +27,7 @@ html {
 }
 
 body {
-   margin-bottom: 75px;
+   margin-bottom: 165px;
 }
 
 footer {
@@ -27,9 +35,19 @@ footer {
    bottom: 0;
    width: 100%;
    /* Footer fixed height */
-   height: 75px;
+   height: 165px;
 }
 /* End of sticky footer code */
+
+@media(max-width:991px) {
+   footer {
+      height: 200px;
+   }
+   
+   body {
+      margin-bottom: 200px;
+   }
+}
 
 .push_down {
    padding-top: 25px;
@@ -73,3 +91,4 @@ table {
 .additional-padding {
    padding: 20px;
 }
+

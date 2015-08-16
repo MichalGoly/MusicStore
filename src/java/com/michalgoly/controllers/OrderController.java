@@ -165,10 +165,6 @@ public class OrderController extends HttpServlet {
       HttpSession session = request.getSession();
       Customer customer = (Customer) session.getAttribute("customer");
       
-      System.err.println("TEST:" + customer.getFirstName());
-      System.err.println("TEST:" + customer.getAddress());
-      
-      
       String url = "/cart/new_customer.jsp";
       if (customer != null && customer.getAddress() != null) {
          // customer with an address exists

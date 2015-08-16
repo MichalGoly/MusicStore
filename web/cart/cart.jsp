@@ -32,53 +32,55 @@
                </form>
             </div>
             <div class="col-sm-8">
-               <table class="table">
-                  <colgroup>
-                     <col class="col-md-1">
-                     <col class="col-md-8">
-                     <col class="col-md-1">
-                     <col class="col-md-1">
-                     <col class="col-md-1">
-                  </colgroup>
-                  <thead>
-                     <tr>
-                        <th>Quantity</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Amount</th>
-                        <th>&nbsp;</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <c:forEach var="item" items="${cart.items}">
+               <div class="table-responsive">
+                  <table class="table">
+                     <colgroup>
+                        <col class="col-md-1">
+                        <col class="col-md-8">
+                        <col class="col-md-1">
+                        <col class="col-md-1">
+                        <col class="col-md-1">
+                     </colgroup>
+                     <thead>
                         <tr>
-                           <td>
-                              <form method="post" action="<c:url value='/order/updateItem'/>">
-                                 <input type="hidden" name="productCode" value="<c:out value='${item.product.code}' />" />
-                                 <input type="text" name="quantity" value="<c:out value='${item.quantity}' />" />
-                                 <input type="submit" class="btn btn-default" value="Update" />
-                              </form>
-                           </td>
-                           <td>${item.product.description}</td>
-                           <td>${item.product.priceCurrencyFormat}</td>
-                           <td>${item.totalPriceCurrencyFormat}</td>
-                           <td>
-                              <form method="post" action="<c:url value='/order/removeItem'/>">
-                                 <input type="hidden" name="productCode" value="<c:out value='${item.product.code}' />" />
-                                 <input type="submit" class="btn btn-danger" value="Delete" />
-                              </form>
-                           </td>
+                           <th>Quantity</th>
+                           <th>Description</th>
+                           <th>Price</th>
+                           <th>Amount</th>
+                           <th>&nbsp;</th>
                         </tr>
-                     </c:forEach>
-                     <tr>
-                        <td><strong>Total:</strong></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>${cart.totalPriceCurrencyFormat}</td>
-                        <td>&nbsp;</td>
-                     </tr>     
-                  </tbody>
-               </table>
+                     </thead>
+                     <tbody>
+                        <c:forEach var="item" items="${cart.items}">
+                           <tr>
+                              <td>
+                                 <form method="post" action="<c:url value='/order/updateItem'/>">
+                                    <input type="hidden" name="productCode" value="<c:out value='${item.product.code}' />" />
+                                    <input type="text" name="quantity" value="<c:out value='${item.quantity}' />" />
+                                    <input type="submit" class="btn btn-default" value="Update" />
+                                 </form>
+                              </td>
+                              <td>${item.product.description}</td>
+                              <td>${item.product.priceCurrencyFormat}</td>
+                              <td>${item.totalPriceCurrencyFormat}</td>
+                              <td>
+                                 <form method="post" action="<c:url value='/order/removeItem'/>">
+                                    <input type="hidden" name="productCode" value="<c:out value='${item.product.code}' />" />
+                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                 </form>
+                              </td>
+                           </tr>
+                        </c:forEach>
+                        <tr>
+                           <td><strong>Total:</strong></td>
+                           <td>&nbsp;</td>
+                           <td>&nbsp;</td>
+                           <td>${cart.totalPriceCurrencyFormat}</td>
+                           <td>&nbsp;</td>
+                        </tr>     
+                     </tbody>
+                  </table>
+               </div>
             </div>
          </div>
       </c:otherwise>

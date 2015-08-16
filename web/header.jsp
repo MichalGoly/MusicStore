@@ -22,6 +22,9 @@
       
       <link href="<c:url value='/includes/css/style.css' />" rel="stylesheet" />
       
+      <!-- Font awesome -->
+      <link href="<c:url value='/includes/css/font-awesome.min.css' />" rel="stylesheet" />
+      
       <!-- jQuery script which makes appropriate navbar tab active -->
       <script>
          var j$ = jQuery.noConflict();
