@@ -4,7 +4,6 @@ import com.michalgoly.business.Product;
 import com.michalgoly.data.ProductDB;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

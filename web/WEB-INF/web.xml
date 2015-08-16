@@ -14,12 +14,34 @@
       <error-code>404</error-code>
       <location>/error_404.jsp</location>
    </error-page>
-   <error-page>
-      <exception-type>java.lang.Throwable</exception-type>
-      <location>/error_java.jsp</location>
-   </error-page>
    
    <listener>
       <listener-class>com.michalgoly.util.MusicStoreContextListener</listener-class>
    </listener>
+   
+   <!-- Restrict access to admin pages -->
+   <security-role>
+      <description>administrator of the website</description>
+      <role-name>administrator</role-name>
+   </security-role>
+   <security-constraint>
+      <web-resource-collection>
+         <web-resource-name>Admin Login</web-resource-name>
+         <url-pattern>/admin_panel/*</url-pattern>
+         <url-pattern>/admin/*</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+         <role-name>administrator</role-name>
+      </auth-constraint>
+   </security-constraint>
+   
+   <login-config>
+      <auth-method>DIGEST</auth-method>
+      <realm-name>Admin Login</realm-name>
+   </login-config>
+   
+   <!-- Use cookies (not URL encoding) for session tracking -->
+   <session-config>
+      <tracking-mode>COOKIE</tracking-mode>
+   </session-config>  
 </web-app>
