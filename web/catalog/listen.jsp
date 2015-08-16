@@ -42,7 +42,10 @@
       </div>
       <div class="col-sm-4">
          <p class="price">${product.priceCurrencyFormat}</p>
-         <a href="#" class="btn btn-primary">Add to Cart</a>
+         <form method="post" action="<c:url value='/order/addItem'/>">
+            <input type="hidden" name="productCode" value="<c:out value='${product.code}' />" />
+            <input type="submit" class="btn btn-primary" value="Add to Cart" />
+         </form>         
       </div>
    </div>      
 </div>       

@@ -164,10 +164,14 @@ public class OrderController extends HttpServlet {
 
       HttpSession session = request.getSession();
       Customer customer = (Customer) session.getAttribute("customer");
-
+      
+      System.err.println("TEST:" + customer.getFirstName());
+      System.err.println("TEST:" + customer.getAddress());
+      
+      
       String url = "/cart/new_customer.jsp";
-      if (customer != null && !customer.getAddress().getAddress1().equals("")) {
-         // customer with an address1 exists
+      if (customer != null && customer.getAddress() != null) {
+         // customer with an address exists
          url = "/order/displayInvoice";
       } else {
          Cookie[] cookies = request.getCookies();
@@ -178,7 +182,7 @@ public class OrderController extends HttpServlet {
             url = "/cart/new_customer.jsp";
          } else {
             customer = CustomerDB.selectByEmail(email);
-            if (customer != null && !customer.getAddress().getAddress1().equals("")) {
+            if (customer != null && customer.getAddress() != null) {
                url = "/order/displayInvoice";
             }
          }
