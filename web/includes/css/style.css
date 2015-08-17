@@ -92,3 +92,14 @@ table {
    padding: 20px;
 }
 
+.margin-bottom {
+   margin-bottom: 25px;
+}
+
+.fa-check {
+   color: green;
+}
+
+.fa-times {
+   color: red;
+}

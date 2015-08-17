@@ -17,7 +17,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * This class represents an invoice which is generated when a customer makes
+ * a purchase in the store.
+ * 
  * @author Michal Goly
  */
 @Entity
@@ -25,7 +27,7 @@ public class Invoice implements Serializable {
    
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long invoiceNumber;
+   private Long number;
    
    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
    private List<LineItem> lineItems;
@@ -33,15 +35,15 @@ public class Invoice implements Serializable {
    @ManyToOne
    private Customer customer;
    
-   @Temporal(TemporalType.DATE)
+   @Temporal(TemporalType.TIMESTAMP)
    private Date invoiceDate;
    
-   private boolean isProcessed;
+   private boolean processed;
    
    public Invoice() {}
 
-   public Long getInvoiceNumber() {
-      return invoiceNumber;
+   public Long getNumber() {
+      return number;
    }
 
    public List<LineItem> getLineItems() {
@@ -55,7 +57,7 @@ public class Invoice implements Serializable {
    public Date getInvoiceDate() {
       return invoiceDate;
    }
-   
+
    public double getInvoiceTotal() {
       double total = 0.0;
       for (LineItem i : lineItems) {
@@ -70,13 +72,14 @@ public class Invoice implements Serializable {
       double total = getInvoiceTotal();
       return currencyFormat.format(total);
    }
-   
-   public boolean isIsProcessed() {
-      return isProcessed;
-   }
 
-   public void setInvoiceNumber(Long invoiceNumber) {
-      this.invoiceNumber = invoiceNumber;
+   public boolean isProcessed() {
+      return processed;
+   }
+   
+
+   public void setNumber(Long number) {
+      this.number = number;
    }
 
    public void setLineItems(List<LineItem> lineItems) {
@@ -91,7 +94,8 @@ public class Invoice implements Serializable {
       this.invoiceDate = invoiceDate;
    }
 
-   public void setIsProcessed(boolean isProcessed) {
-      this.isProcessed = isProcessed;
+   public void setProcessed(boolean processed) {
+      this.processed = processed;
    }
+
 }
