@@ -1,6 +1,10 @@
 package com.michalgoly.controllers;
 
+import com.michalgoly.business.Download;
+import com.michalgoly.data.DownloadDB;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,8 +51,13 @@ public class AdminServlet extends HttpServlet {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
 
-   private String displayLogs(HttpServletRequest request, HttpServletResponse response) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   private String displayLogs(HttpServletRequest request,
+           HttpServletResponse response) {
+      
+      List<Download> downloads = DownloadDB.selectDownloads();
+      Collections.reverse(downloads);
+      request.setAttribute("downloads", downloads);
+      return "/admin_panel/downloads.jsp";
    }
 
 }

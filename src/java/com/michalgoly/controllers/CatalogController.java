@@ -1,8 +1,10 @@
 package com.michalgoly.controllers;
 
 import com.michalgoly.business.Customer;
+import com.michalgoly.business.Download;
 import com.michalgoly.business.Product;
 import com.michalgoly.data.CustomerDB;
+import com.michalgoly.data.DownloadDB;
 import com.michalgoly.data.ProductDB;
 import com.michalgoly.util.CookieUtil;
 import java.io.IOException;
@@ -109,7 +111,13 @@ public class CatalogController extends HttpServlet {
          session.setAttribute("customer", customer);
       }
 
-      // TODO keep track of downloads by users (would be accessible from admin page)
+      // keep track of downloads by the customers
+      Product product = (Product) session.getAttribute("product");
+      Download download = new Download();
+      download.setCustomer(customer);
+      download.setProduct(product);
+      DownloadDB.insert(download);
+
       return "/catalog/listen.jsp";
    }
 
@@ -147,6 +155,13 @@ public class CatalogController extends HttpServlet {
       emailCookie.setPath("/");
       response.addCookie(emailCookie);
 
+      // keep track of downloads by the customers
+      Product product = (Product) session.getAttribute("product");
+      Download download = new Download();
+      download.setCustomer(customer);
+      download.setProduct(product);
+      DownloadDB.insert(download);
+      
       return "/catalog/listen.jsp";
    }
 
