@@ -32,8 +32,6 @@ public class AdminServlet extends HttpServlet {
       
       if (requestURI.endsWith("/processInvoices")) {
          url = processInvoices(request, response);
-      } else if (requestURI.endsWith("/manageProducts")) {
-         url = manageProducts(request, response); 
       } else if (requestURI.endsWith("/displayLogs")) {
          url = displayLogs(request, response);
       } else if (requestURI.endsWith("/displayInvoice")) {
@@ -66,10 +64,6 @@ public class AdminServlet extends HttpServlet {
       Collections.reverse(invoices);
       request.setAttribute("invoices", invoices);
       return "/admin_panel/invoices.jsp";
-   }
-
-   private String manageProducts(HttpServletRequest request, HttpServletResponse response) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
 
    private String displayLogs(HttpServletRequest request,

@@ -73,7 +73,6 @@
       <div class="col-sm-3">
          <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="<c:url value='/admin/processInvoices' />">Process invoices</a></li>
-            <li><a href="<c:url value='/admin/manageProducts' />">Manage Products</a></li>
             <li><a href="<c:url value='/admin/displayLogs' />">Downloads Log</a></li>
          </ul>
       </div>
