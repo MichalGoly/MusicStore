@@ -19,7 +19,7 @@
       <listener-class>com.michalgoly.util.MusicStoreContextListener</listener-class>
    </listener>
    
-   <!-- Restrict access to admin pages -->
+   <!-- You can restrict access to admin pages by uncommenting the code below-->
    <!--<security-role>
       <description>administrator of the website</description>
       <role-name>administrator</role-name>
