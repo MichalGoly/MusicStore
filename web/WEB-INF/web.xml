@@ -20,7 +20,7 @@
    </listener>
    
    <!-- Restrict access to admin pages -->
-   <security-role>
+   <!--<security-role>
       <description>administrator of the website</description>
       <role-name>administrator</role-name>
    </security-role>
@@ -36,9 +36,9 @@
    </security-constraint>
    
    <login-config>
-      <auth-method>DIGEST</auth-method>
+      <auth-method>BASIC</auth-method>
       <realm-name>Admin Login</realm-name>
-   </login-config>
+   </login-config> -->
    
    <!-- Use cookies (not URL encoding) for session tracking -->
    <session-config>

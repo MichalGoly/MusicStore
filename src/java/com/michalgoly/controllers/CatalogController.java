@@ -38,7 +38,7 @@ public class CatalogController extends HttpServlet {
          url = displayProducts(request, response);
       } else if (requestURI.endsWith("/listen")) {
          url = listen(request, response);
-      } else if (requestURI.matches("/musicStore/catalog/product/.*")) {
+      } else if (requestURI.matches("/MusicStore/catalog/product/.*")) {
          url = showProduct(request, response);
       }
 

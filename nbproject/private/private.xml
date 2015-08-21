@@ -3,20 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/data/InvoiceDB.java</file>
             <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/WEB-INF/web.xml</file>
             <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/conf/persistence.xml</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/data/PopulateDatabase.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/controllers/AdminServlet.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/data/ProductDB.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/business/LineItem.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/admin_panel/index.jsp</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/business/Product.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/util/MusicStoreContextListener.java</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/admin_panel/downloads.jsp</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/WEB-INF/mail.properties</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/web/META-INF/context.xml</file>
-            <file>file:/home/michal/development/NetBeansProjects/MusicStore/src/java/com/michalgoly/business/Invoice.java</file>
         </group>
     </open-files>
 </project-private>
